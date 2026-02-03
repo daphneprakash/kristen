@@ -1,1 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kristen, will you be my Valentine?</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #ffe6f2, #ff9a9e);
+      color: #2d1b1b;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      max-width: 520px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      margin-top: 1rem;
+      font-size: 1.6rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .photo-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: center;
+      border: 4px solid #ff4b6e;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .photo-label {
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.7rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4b6e;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    #yesBtn:hover {
+      transform: translateY(-2px) scale(1.03);
+      background-color: #ff2f59;
+    }
+
+    #noBtn {
+      background-color: #fff;
+      color: #ff4b6e;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      position: relative;
+    }
+
+    #noBtn:hover {
+      transform: translateY(-1px);
+    }
+
+    .hidden { display: none; }
+
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      font-size: 20px;
+      animation: rise 6s linear infinite;
+      opacity: 0.7;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.8);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-110vh) translateX(40px) scale(1.3);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="questionCard" class="card">
+    <h1>Hi Kristen ❤️</h1>
+
+    <div class="photo-row">
+      <div>
+        <img class="photo" src="kristen-sad.jpg" alt="Sad Kristen">
+        <div class="photo-label">If you say “no” 😭</div>
+      </div>
+      <div>
+        <img class="photo" src="kristen-happy.jpg" alt="Happy Kristen">
+        <div class="photo-label">If you say “yes” 🥰</div>
+      </div>
+    </div>
+
+    <p>
+      I made this very serious scientific model to show the projected emotional outcomes
+      of your decision.
+    </p>
+    <p>
+      Thank you for being warm, brilliant, dramatic in the best way,
+      and the person I want to hype up forever.
+    </p>
+
+    <h2>So… will you be my Valentine?</h2>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes, obviously 💘</button>
+      <button id="noBtn">No (wrong choice) 🙃</button>
+    </div>
+  </div>
+
+  <div id="answerCard" class="card hidden">
+    <h1>YOU CHOSE CORRECTLY 💐</h1>
+    <p>
+      You hereby unlock: one Valentine’s date, unlimited compliments,
+      and a girlfriend who is obnoxiously proud of you.
+    </p>
+    <p>
+      Love,<br>
+      Daphne
+    </p>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const questionCard = document.getElementById("questionCard");
+    const answerCard = document.getElementById("answerCard");
+
+    yesBtn.addEventListener("click", () => {
+      questionCard.classList.add("hidden");
+      answerCard.classList.remove("hidden");
+    });
+
+    noBtn.addEventListener("mouseover", () => {
+      const maxX = window.innerWidth - 200;
+      const maxY = window.innerHeight - 200;
+      const randomX = Math.random() * maxX - maxX / 2;
+      const randomY = Math.random() * maxY - maxY / 2;
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤";
+
+      const startLeft = Math.random() * window.innerWidth;
+      heart.style.left = startLeft + "px";
+      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+      heart.style.fontSize = 14 + Math.random() * 16 + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 600);
+  </script>
+</body>
+</html>
 
