@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Kristen, will you be my Valentine?</title>
+  <title>surprise!!!!</title>
   <style>
     * { box-sizing: border-box; }
 
@@ -17,7 +17,6 @@
       text-align: center;
       overflow: hidden;
       background-color: #ffffff;
-      /* smaller, more subtle hearts/dots */
       background-image:
         radial-gradient(circle at 4px 4px, #ff4b6e 2px, transparent 3px),
         radial-gradient(circle at 12px 12px, #ff4b6e 2px, transparent 3px);
@@ -67,15 +66,13 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
 
-    #startReasonsBtn,
-    #keepClickingBtn {
+    .primary-btn {
       background-color: #ff4b6e;
       color: white;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
 
-    #startReasonsBtn:hover,
-    #keepClickingBtn:hover {
+    .primary-btn:hover {
       transform: translateY(-2px) scale(1.05);
       background-color: #ff2f59;
     }
@@ -104,37 +101,19 @@
 
     .hidden { display: none; }
 
-    .reasons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1.25rem;
-    }
-
-    .reason-card {
-      background: #fff7fa;
-      border-radius: 18px;
-      padding: 0.75rem 0.9rem 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      text-align: left;
-    }
-
     .reason-image {
       width: 100%;
-      max-height: 140px;
+      max-height: 220px;
       object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 0.5rem;
+      border-radius: 16px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.16);
     }
 
     .reason-title {
       font-weight: 600;
-      margin-bottom: 0.2rem;
-      font-size: 0.95rem;
-    }
-
-    .reason-text {
-      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
     }
 
     .photo-row {
@@ -193,62 +172,78 @@
     </p>
 
     <div class="buttons">
-      <button id="startReasonsBtn">reasons i should be your valentine</button>
+      <button id="toReason1Btn" class="primary-btn">start my case</button>
     </div>
   </div>
 
-  <!-- PAGE 2: reasons -->
-  <div id="reasonsCard" class="card hidden">
-    <h1>reasons i should be your valentine</h1>
-
-    <div class="reasons-grid">
-      <div class="reason-card">
-        <img class="reason-image" src="reason-valentine.jpg" alt="you would have a valentine">
-        <div class="reason-title">you would have a valentine</div>
-        <div class="reason-text">
-          according to my calculations, if ur free feb 14 and im free feb 14... we could both not be free on feb 14. lmk if my calculations make sense
-        </div>
-      </div>
-
-      <div class="reason-card">
-        <img class="reason-image" src="reason-gifts.jpg" alt="i get to get you stuff">
-        <div class="reason-title">it gives me a valid reason to get you stuff</div>
-        <div class="reason-text">
-          pspspsps u wanna be my valentine sooooo bad
-        </div>
-      </div>
-
-      <div class="reason-card">
-        <img class="reason-image" src="reason-cheat.jpg" alt="i would never cheat">
-        <div class="reason-title">i would never cheat</div>
-        <div class="reason-text">
-          only weird people do that so dw your valentine spot is very secure
-        </div>
-      </div>
-
-      <div class="reason-card">
-        <img class="reason-image" src="reason-yap.jpg" alt="listening to you yap">
-        <div class="reason-title">i love listening to you yap</div>
-        <div class="reason-text">
-          i am not always the greatest at this but i SWEAR i do it's my favorite thing
-        </div>
-      </div>
-
-      <div class="reason-card">
-        <img class="reason-image" src="reason-pretty.jpg" alt="prettiest girl">
-        <div class="reason-title">i have a crush on you</div>
-        <div class="reason-text">
-          you are the prettiest, most beautiful girl in the world
-        </div>
-      </div>
-    </div>
-
+  <!-- REASON 1 -->
+  <div id="reason1Card" class="card hidden">
+    <h1>reason 1</h1>
+    <img class="reason-image" src="reason-valentine.jpg" alt="you would have a valentine">
+    <p class="reason-title">you would have a valentine</p>
+    <p>
+      according to my calculations, if ur free feb 14 and im free feb 14...
+      we could both not be free on feb 14. lmk if my calculations make sense.
+    </p>
     <div class="buttons">
-      <button id="keepClickingBtn">keep clicking</button>
+      <button id="toReason2Btn" class="primary-btn">next reason ➜</button>
     </div>
   </div>
 
-  <!-- PAGE 3: ask with yes/no -->
+  <!-- REASON 2 -->
+  <div id="reason2Card" class="card hidden">
+    <h1>reason 2</h1>
+    <img class="reason-image" src="reason-gifts.jpg" alt="i get to get you stuff">
+    <p class="reason-title">it gives me a valid reason to get you stuff</p>
+    <p>
+      pspspsps u wanna be my valentine sooooo bad.
+    </p>
+    <div class="buttons">
+      <button id="toReason3Btn" class="primary-btn">click me!➜</button>
+    </div>
+  </div>
+
+  <!-- REASON 3 -->
+  <div id="reason3Card" class="card hidden">
+    <h1>reason 3</h1>
+    <img class="reason-image" src="reason-cheat.jpg" alt="i would never cheat">
+    <p class="reason-title">i would never cheat</p>
+    <p>
+      only weird people do that so dw your valentine spot is very secure.
+      this heart is annoyingly loyal and fully committed to you.
+    </p>
+    <div class="buttons">
+      <button id="toReason4Btn" class="primary-btn">next reason</button>
+    </div>
+  </div>
+
+  <!-- REASON 4 -->
+  <div id="reason4Card" class="card hidden">
+    <h1>reason 4</h1>
+    <img class="reason-image" src="reason-yap.jpg" alt="listening to you yap">
+    <p class="reason-title">i love listening to you yap</p>
+    <p>
+      i am not always the greatest at this but i SWEAR i do
+    </p>
+    <div class="buttons">
+      <button id="toReason5Btn" class="primary-btn">keep going...</button>
+    </div>
+  </div>
+
+  <!-- REASON 5 -->
+  <div id="reason5Card" class="card hidden">
+    <h1>reason 5</h1>
+    <img class="reason-image" src="reason-pretty.jpg" alt="prettiest girl">
+    <p class="reason-title">i have a crush on you</p>
+    <p>
+      you are the prettiest, most beautiful girl in the world
+    </p>
+    <div class="buttons">
+      <button id="toQuestionBtn" class="primary-btn">LAST ONE I SWEAR ➜</button>
+    </div>
+  </div>
+
+  <!-- PAGE 7: ask with yes/no -->
   <div id="questionCard" class="card hidden">
     <h1>final question</h1>
 
@@ -264,7 +259,8 @@
     </div>
 
     <p>
-      i made this extremely serious visualization to show the emotional ramifications of your decision on my mental health.
+      i made this extremely serious visualization to show the emotional
+      ramifications of your decision on my mental health.
     </p>
 
     <h2>so… will you be my valentine?</h2>
@@ -275,7 +271,7 @@
     </div>
   </div>
 
-  <!-- PAGE 4: yes answer -->
+  <!-- PAGE 8: yes answer -->
   <div id="answerCard" class="card hidden">
     <h1>YAY 💐</h1>
 
@@ -298,19 +294,28 @@
     </p>
 
     <p>
-      i will go lock in and plot now :) <br>
-      - daphne
+      i will go lock in now :)
     </p>
   </div>
 
   <script>
+    // cards
     const introCard = document.getElementById("introCard");
-    const reasonsCard = document.getElementById("reasonsCard");
+    const reason1Card = document.getElementById("reason1Card");
+    const reason2Card = document.getElementById("reason2Card");
+    const reason3Card = document.getElementById("reason3Card");
+    const reason4Card = document.getElementById("reason4Card");
+    const reason5Card = document.getElementById("reason5Card");
     const questionCard = document.getElementById("questionCard");
     const answerCard = document.getElementById("answerCard");
 
-    const startReasonsBtn = document.getElementById("startReasonsBtn");
-    const keepClickingBtn = document.getElementById("keepClickingBtn");
+    // buttons
+    const toReason1Btn = document.getElementById("toReason1Btn");
+    const toReason2Btn = document.getElementById("toReason2Btn");
+    const toReason3Btn = document.getElementById("toReason3Btn");
+    const toReason4Btn = document.getElementById("toReason4Btn");
+    const toReason5Btn = document.getElementById("toReason5Btn");
+    const toQuestionBtn = document.getElementById("toQuestionBtn");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
 
@@ -324,20 +329,22 @@
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // navigation
-    startReasonsBtn.addEventListener("click", () => {
-      introCard.classList.add("hidden");
-      reasonsCard.classList.remove("hidden");
-    });
+    function showCard(showEl) {
+      [introCard, reason1Card, reason2Card, reason3Card, reason4Card, reason5Card, questionCard, answerCard]
+        .forEach(el => el.classList.add("hidden"));
+      showEl.classList.remove("hidden");
+    }
 
-    keepClickingBtn.addEventListener("click", () => {
-      reasonsCard.classList.add("hidden");
-      questionCard.classList.remove("hidden");
-    });
+    // navigation
+    toReason1Btn.addEventListener("click", () => showCard(reason1Card));
+    toReason2Btn.addEventListener("click", () => showCard(reason2Card));
+    toReason3Btn.addEventListener("click", () => showCard(reason3Card));
+    toReason4Btn.addEventListener("click", () => showCard(reason4Card));
+    toReason5Btn.addEventListener("click", () => showCard(reason5Card));
+    toQuestionBtn.addEventListener("click", () => showCard(questionCard));
 
     yesBtn.addEventListener("click", () => {
-      questionCard.classList.add("hidden");
-      answerCard.classList.remove("hidden");
+      showCard(answerCard);
       startConfetti();
     });
 
