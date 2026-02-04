@@ -17,14 +17,397 @@
       text-align: center;
       overflow: hidden;
       background-color: #ffffff;
+      /* smaller, more subtle hearts/dots */
       background-image:
-        radial-gradient(circle at 6px 6px, #ff4b6e 3px, transparent 4px),
-        radial-gradient(circle at 14px 14px, #ff4b6e 3px, transparent 4px);
-      background-size: 20px 20px;
+        radial-gradient(circle at 4px 4px, #ff4b6e 2px, transparent 3px),
+        radial-gradient(circle at 12px 12px, #ff4b6e 2px, transparent 3px);
+      background-size: 16px 16px;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.95);
       padding: 2rem 2.5rem;
       border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      max-width: 620px;
+      width: 90%;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.7rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    #startReasonsBtn,
+    #keepClickingBtn {
+      background-color: #ff4b6e;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    #startReasonsBtn:hover,
+    #keepClickingBtn:hover {
+      transform: translateY(-2px) scale(1.05);
+      background-color: #ff2f59;
+    }
+
+    #yesBtn {
+      background-color: #ff4b6e;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    #yesBtn:hover {
+      transform: translateY(-2px) scale(1.08);
+      background-color: #ff2f59;
+    }
+
+    #noBtn {
+      background-color: #fff;
+      color: #ff4b6e;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      position: relative;
+    }
+
+    #noBtn:hover {
+      transform: translateY(-1px);
+    }
+
+    .hidden { display: none; }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .reason-card {
+      background: #fff7fa;
+      border-radius: 18px;
+      padding: 0.75rem 0.9rem 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+
+    .reason-image {
+      width: 100%;
+      max-height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 0.5rem;
+    }
+
+    .reason-title {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .reason-text {
+      font-size: 0.9rem;
+    }
+
+    .photo-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .photo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 160px;
+    }
+
+    .photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: center;
+      border: 4px solid #ff4b6e;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+
+    .photo-label {
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- PAGE 1: intro -->
+  <div id="introCard" class="card">
+    <h1>kristen!!!</h1>
+    <p>
+      i made you this only because i wanted to procrastinate
+      <br>
+      (and maybe bc asking you to be my valentine over text 
+      (while u r off doing AMAZING very cool girlboss wib things)
+      felt illegal. but mostly bc i wanted to not do hw)
+    </p>
+    <p>
+      SOOO let me present my case.
+    </p>
+
+    <div class="buttons">
+      <button id="startReasonsBtn">reasons i should be your valentine</button>
+    </div>
+  </div>
+
+  <!-- PAGE 2: reasons -->
+  <div id="reasonsCard" class="card hidden">
+    <h1>reasons i should be your valentine</h1>
+
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <img class="reason-image" src="reason-valentine.jpg" alt="you would have a valentine">
+        <div class="reason-title">you would have a valentine</div>
+        <div class="reason-text">
+          according to my calculations, if ur free feb 14 and im free feb 14... we could both not be free on feb 14. lmk if my calculations make sense
+        </div>
+      </div>
+
+      <div class="reason-card">
+        <img class="reason-image" src="reason-gifts.jpg" alt="i get to get you stuff">
+        <div class="reason-title">it gives me a valid reason to get you stuff</div>
+        <div class="reason-text">
+          pspspsps u wanna be my valentine sooooo bad
+        </div>
+      </div>
+
+      <div class="reason-card">
+        <img class="reason-image" src="reason-cheat.jpg" alt="i would never cheat">
+        <div class="reason-title">i would never cheat</div>
+        <div class="reason-text">
+          only weird people do that so dw your valentine spot is very secure
+        </div>
+      </div>
+
+      <div class="reason-card">
+        <img class="reason-image" src="reason-yap.jpg" alt="listening to you yap">
+        <div class="reason-title">i love listening to you yap</div>
+        <div class="reason-text">
+          i am not always the greatest at this but i SWEAR i do it's my favorite thing
+        </div>
+      </div>
+
+      <div class="reason-card">
+        <img class="reason-image" src="reason-pretty.jpg" alt="prettiest girl">
+        <div class="reason-title">i have a crush on you</div>
+        <div class="reason-text">
+          you are the prettiest, most beautiful girl in the world
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="keepClickingBtn">keep clicking</button>
+    </div>
+  </div>
+
+  <!-- PAGE 3: ask with yes/no -->
+  <div id="questionCard" class="card hidden">
+    <h1>final question</h1>
+
+    <div class="photo-row">
+      <div class="photo-block">
+        <img class="photo" src="kristen-happy.jpg" alt="Happy Kristen">
+        <div class="photo-label">me if you say yes</div>
+      </div>
+      <div class="photo-block">
+        <img class="photo" src="kristen-sad.jpg" alt="Sad Kristen">
+        <div class="photo-label">me if you say no</div>
+      </div>
+    </div>
+
+    <p>
+      i made this extremely serious visualization to show the emotional ramifications of your decision on my mental health.
+    </p>
+
+    <h2>so… will you be my valentine?</h2>
+
+    <div class="buttons">
+      <button id="yesBtn">yes, duh</button>
+      <button id="noBtn">no (u hate me)</button>
+    </div>
+  </div>
+
+  <!-- PAGE 4: yes answer -->
+  <div id="answerCard" class="card hidden">
+    <h1>YAY 💐</h1>
+
+    <img src="kristen-celebrate.gif" alt="Kristen celebrating" style="
+      max-width: 220px;
+      width: 60%;
+      border-radius: 16px;
+      margin: 0.75rem auto 1rem;
+      display: block;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    ">
+
+    <p>
+      best possible emotional outcome achieved!
+      (aka one very happy daphne)
+    </p>
+    <p>
+      also included: a valentine, flowers (NOT roses), unlimited compliments,
+      and snacks on demand
+    </p>
+
+    <p>
+      i will go lock in and plot now :) <br>
+      - daphne
+    </p>
+  </div>
+
+  <script>
+    const introCard = document.getElementById("introCard");
+    const reasonsCard = document.getElementById("reasonsCard");
+    const questionCard = document.getElementById("questionCard");
+    const answerCard = document.getElementById("answerCard");
+
+    const startReasonsBtn = document.getElementById("startReasonsBtn");
+    const keepClickingBtn = document.getElementById("keepClickingBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    // navigation
+    startReasonsBtn.addEventListener("click", () => {
+      introCard.classList.add("hidden");
+      reasonsCard.classList.remove("hidden");
+    });
+
+    keepClickingBtn.addEventListener("click", () => {
+      reasonsCard.classList.add("hidden");
+      questionCard.classList.remove("hidden");
+    });
+
+    yesBtn.addEventListener("click", () => {
+      questionCard.classList.add("hidden");
+      answerCard.classList.remove("hidden");
+      startConfetti();
+    });
+
+    // No button runs away
+    noBtn.addEventListener("mouseover", () => {
+      const maxX = window.innerWidth - 200;
+      const maxY = window.innerHeight - 200;
+      const randomX = Math.random() * maxX - maxX / 2;
+      const randomY = Math.random() * maxY - maxY / 2;
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    });
+
+    // Simple confetti burst
+    let confettiPieces = [];
+    let confettiActive = false;
+
+    function createConfettiPiece() {
+      const colors = ["#ff4b6e", "#ff9a9e", "#ffd166", "#06d6a0", "#118ab2"];
+      return {
+        x: Math.random() * canvas.width,
+        y: -20,
+        size: 5 + Math.random() * 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        velocityX: -2 + Math.random() * 4,
+        velocityY: 2 + Math.random() * 4,
+        rotation: Math.random() * 2 * Math.PI,
+        rotationSpeed: -0.1 + Math.random() * 0.2
+      };
+    }
+
+    function startConfetti() {
+      confettiPieces = [];
+      for (let i = 0; i < 150; i++) {
+        confettiPieces.push(createConfettiPiece());
+      }
+      confettiActive = true;
+      requestAnimationFrame(animateConfetti);
+
+      setTimeout(() => {
+        confettiActive = false;
+      }, 3000);
+    }
+
+    function animateConfetti() {
+      if (!confettiActive && confettiPieces.length === 0) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      confettiPieces.forEach((p, index) => {
+        p.x += p.velocityX;
+        p.y += p.velocityY;
+        p.rotation += p.rotationSpeed;
+        p.velocityY += 0.05;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+
+        if (p.y > canvas.height + 20) {
+          confettiPieces.splice(index, 1);
+        }
+      });
+
+      if (confettiActive || confettiPieces.length > 0) {
+        requestAnimationFrame(animateConfetti);
+      }
+    }
+  </script>
+</body>
+</html>
